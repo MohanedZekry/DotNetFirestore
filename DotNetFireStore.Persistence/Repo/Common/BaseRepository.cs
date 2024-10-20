@@ -1,40 +1,62 @@
 ﻿using DotNetFireStore.Application.IRepo.ICommon;
 using DotNetFireStore.Domain.Common;
+using DotNetFireStore.Persistence.Context;
 using Google.Cloud.Firestore;
 
 namespace DotNetFireStore.Persistence.Repo.Common
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseModel
     {
-        public FirestoreDb _firestoreDb;
-        public Task AddAsync(T entity)
+        private readonly FirebaseDbContext _context;
+        private readonly string _collectionName;
+
+        public BaseRepository(FirebaseDbContext context, string collectionName)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _collectionName = collectionName;
+        }
+        public async Task AddAsync(T entity)
+        {
+            CollectionReference collection = _context.GetCollection(_collectionName);
+            await collection.AddAsync(entity);
         }
 
-        public Task DeleteAsync(T entity)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
+            DocumentReference docRef = _context.GetCollection(_collectionName).Document(entity.ID.ToString());
+            await docRef.DeleteAsync();
         }
 
-        public Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            CollectionReference collection = _context.GetCollection(_collectionName);
+            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+            return snapshot.Documents.Select(doc => doc.ConvertTo<T>()).ToList();
         }
 
-        public Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            DocumentReference docRef = _context.GetCollection(_collectionName).Document(id.ToString());
+            DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+
+            if (snapshot.Exists)
+            {
+                return snapshot.ConvertTo<T>();
+            }
+
+            return null;
         }
 
-        public Task<List<T>> QueryAsync(Query query)
+        public async Task<List<T>> QueryAsync(Query query)
         {
-            throw new NotImplementedException();
+            QuerySnapshot snapshot = await query.GetSnapshotAsync();
+            return snapshot.Documents.Select(doc => doc.ConvertTo<T>()).ToList();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            DocumentReference docRef = _context.GetCollection(_collectionName).Document(entity.ID.ToString());
+            await docRef.SetAsync(entity, SetOptions.Overwrite);
         }
     }
 }
