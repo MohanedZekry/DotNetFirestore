@@ -1,4 +1,4 @@
-# DotNetFireStore 
+# DotNetFirestore 
 is a .NET Core Web API project designed to simplify interaction with Google Firestore. It provides an easy-to-use solution for performing CRUD operations and executing queries, all while maintaining a clean architecture.
 
 ## Table of Contents
