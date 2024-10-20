@@ -1,4 +1,4 @@
-﻿using DotNetFireStore.Application.IRepo.ICommon;
+﻿using DotNetFireStore.Application.IService.ICommon;
 using DotNetFireStore.Domain.Common;
 using DotNetFireStore.Persistence.Context;
 using Google.Cloud.Firestore;
@@ -34,7 +34,7 @@ namespace DotNetFireStore.Persistence.Repo.Common
             return snapshot.Documents.Select(doc => doc.ConvertTo<T>()).ToList();
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(string id)
         {
             DocumentReference docRef = _context.GetCollection(_collectionName).Document(id.ToString());
             DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();

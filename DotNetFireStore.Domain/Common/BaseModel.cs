@@ -1,15 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Google.Cloud.Firestore;
 
 namespace DotNetFireStore.Domain.Common
 {
+    [FirestoreData]
     public class BaseModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ID { get; set; }
+        [FirestoreProperty]
+        public string ID { get; set; }
+        [FirestoreProperty]
         public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.Now;
+        [FirestoreProperty]
         public DateTimeOffset? DateUpdated { get; set; }
+        [FirestoreProperty]
         public DateTimeOffset? DateDeleted { get; set; }
         public Guid? UserID { get; set; }
+        [FirestoreProperty]
         public bool IsDeleted { get; set; } = false;
     }
 }

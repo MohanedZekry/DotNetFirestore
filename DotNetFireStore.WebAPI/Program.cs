@@ -1,5 +1,10 @@
+using DotNetFireStore.Application;
+using DotNetFireStore.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.ConfigurePersistence(builder.Configuration);
+builder.Services.ConfigureApplication(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

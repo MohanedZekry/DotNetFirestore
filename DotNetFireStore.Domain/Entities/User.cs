@@ -4,7 +4,7 @@ using Google.Cloud.Firestore;
 namespace DotNetFireStore.Domain.Entities
 {
     [FirestoreData]
-    public class Users : BaseModel
+    public class User : BaseModel
     {
         [FirestoreProperty]
         public string Name { get; set; }

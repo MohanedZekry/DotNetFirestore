@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\DotNetFireStore.Application\DotNetFireStore.Application.csproj" />
+    <ProjectReference Include="..\DotNetFireStore.Persistence\DotNetFireStore.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,6 +10,10 @@ namespace DotNetFireStore.Persistence.Context
         public FirebaseDbContext(IConfiguration configuration)
         {
             string projectId = configuration["Firestore:ProjectId"];
+            string keyFilePath = configuration["Firestore:KeyFilePath"];
+
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", keyFilePath);
+
             _fireStoreDb = FirestoreDb.Create(projectId);
         }
         public CollectionReference GetCollection(string collectionName)
