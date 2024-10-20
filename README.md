@@ -19,7 +19,7 @@ To get started with the DotNetFireStore project, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/MohanedZekry/go-router-authentication.git
+   git clone https://github.com/MohanedZekry/DotNetFirestore
 
 # Instructions for Updating Firestore Configuration
 
