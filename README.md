@@ -15,7 +15,7 @@ To get started with the DotNetFireStore project, follow these steps:
    ```bash
    git clone https://github.com/MohanedZekry/go-router-authentication.git
 
-# Instructions for Updating Firestore Configuration
+# Instructions # for Updating Firestore Configuration
 
 1. **Open your `appsettings.json` file** in your .NET Core project.
 
