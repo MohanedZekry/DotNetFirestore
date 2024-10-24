@@ -1,4 +1,4 @@
-﻿using DotNetFireStore.Application.IService.ICommon;
+﻿using DotNetFireStore.Application.Repo.ICommon;
 using DotNetFireStore.Domain.Entities;
 using DotNetFireStore.Persistence.Context;
 using DotNetFireStore.Persistence.Repo.Common;
@@ -12,6 +12,7 @@ namespace DotNetFireStore.Persistence
     {
         public static void ConfigurePersistence(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddSingleton<FirebaseDbContext>();
 
             services.AddScoped<IBaseRepository<User>>(provider =>

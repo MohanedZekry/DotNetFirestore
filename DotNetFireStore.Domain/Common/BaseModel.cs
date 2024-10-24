@@ -6,7 +6,7 @@ namespace DotNetFireStore.Domain.Common
     public class BaseModel
     {
         [FirestoreProperty]
-        public string ID { get; set; }
+        public string ID { get; set; } = Guid.NewGuid().ToString();
         [FirestoreProperty]
         public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.Now;
         [FirestoreProperty]

@@ -1,7 +1,7 @@
 ﻿using DotNetFireStore.Domain.Common;
 using Google.Cloud.Firestore;
 
-namespace DotNetFireStore.Application.IService.ICommon
+namespace DotNetFireStore.Application.Repo.ICommon
 {
     public interface IBaseRepository<T> where T : BaseModel
     {

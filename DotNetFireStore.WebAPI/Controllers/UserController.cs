@@ -1,54 +1,25 @@
-﻿using DotNetFireStore.Application.IService.IUserService;
-using DotNetFireStore.Domain.Entities;
+﻿using DotNetFireStore.Application.Features.UserFeatures.Add;
 using DotNetFireStore.WebAPI.Controllers.Common;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetFireStore.WebAPI.Controllers
 {
     public class UserController : BaseController
     {
+        private readonly IMediator _mediator;
 
-        private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        public UserController(IMediator mediator)
         {
-            _userService = userService;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAllUsers()
-        {
-            var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(string id)
-        {
-            var user = await _userService.GetUserByIdAsync(id);
-            return Ok(user);
+            _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] User user)
+        public async Task<ActionResult<AddUserResponse>> Create(AddUserRequest request,
+            CancellationToken cancellationToken)
         {
-            await _userService.AddUserAsync(user);
-            return Ok();
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
         }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(string id, [FromBody] User user)
-        {
-            user.ID = id;
-            await _userService.UpdateUserAsync(user);
-            return Ok();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
-        {
-            await _userService.DeleteUserAsync(id);
-            return Ok();
-        }
-
     }
 }

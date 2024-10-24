@@ -1,5 +1,5 @@
 ﻿using DotNetFireStore.Application.Common.Exceptions;
-using DotNetFireStore.Application.IService.ICommon;
+using DotNetFireStore.Application.Repo.ICommon;
 using DotNetFireStore.Domain.Common;
 using DotNetFireStore.Persistence.Context;
 using Google.Cloud.Firestore;
