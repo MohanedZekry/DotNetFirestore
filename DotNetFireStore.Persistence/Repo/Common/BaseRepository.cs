@@ -1,4 +1,5 @@
-﻿using DotNetFireStore.Application.IService.ICommon;
+﻿using DotNetFireStore.Application.Common.Exceptions;
+using DotNetFireStore.Application.IService.ICommon;
 using DotNetFireStore.Domain.Common;
 using DotNetFireStore.Persistence.Context;
 using Google.Cloud.Firestore;
@@ -44,7 +45,7 @@ namespace DotNetFireStore.Persistence.Repo.Common
                 return snapshot.ConvertTo<T>();
             }
 
-            return null;
+            throw new NoDataFoundException(id);
         }
 
         public async Task<List<T>> QueryAsync(Query query)

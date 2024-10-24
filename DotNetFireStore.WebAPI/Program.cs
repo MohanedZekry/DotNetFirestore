@@ -1,10 +1,14 @@
 using DotNetFireStore.Application;
 using DotNetFireStore.Persistence;
+using DotNetFireStore.WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigurePersistence(builder.Configuration);
-builder.Services.ConfigureApplication(builder.Configuration);
+builder.Services.ConfigureApplication();
+
+builder.Services.ConfigureCorsPolicy();
+builder.Services.ConfigureApiBehavior();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -19,9 +23,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseErrorHandler();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
