@@ -13,6 +13,7 @@ is a .NET Core Web API project designed to simplify interaction with Google Fire
 - Flexible Query Support: Execute complex queries to retrieve data based on specific criteria.
 - Clean Architecture: Built with the repository pattern, ensuring a separation of concerns and enhancing maintainability.
 - Transaction Management: Robust support for managing transactions, ensuring data integrity.
+- MediatR branch: This branch implements MediatR for handling commands and queries, along with Fluent Validation for ensuring data integrity and validation rules.
 
 ## Installation
 To get started with the DotNetFireStore project, follow these steps:
