@@ -15,7 +15,7 @@ public class AddUserMapperTests
     [Fact]
     public void Should_Map_AddUserRequest_To_User()
     {
-        var request = new AddUserRequest("test@example.com", "John Doe");
+        var request = new AddUserRequest("test@example.com", "Mohaned Zekry");
 
         var user = _mapper.Map<User>(request);
 
