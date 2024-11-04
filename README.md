@@ -9,10 +9,13 @@ is a .NET Core Web API project designed to simplify interaction with Google Fire
 - [License](#license)
 
 ## Features
-- Easy CRUD Operations: Perform create, read, update, and delete operations with minimal effort.
-- Flexible Query Support: Execute complex queries to retrieve data based on specific criteria.
-- Clean Architecture: Built with the repository pattern, ensuring a separation of concerns and enhancing maintainability.
-- Transaction Management: Robust support for managing transactions, ensuring data integrity.
+- **Easy CRUD Operations**: Perform create, read, update, and delete operations with minimal effort.
+- **Flexible Query Support**: Execute complex queries to retrieve data based on specific criteria.
+- **Clean Architecture**: Built with the repository pattern, ensuring a separation of concerns and enhancing maintainability.
+- **Transaction Management**: Robust support for managing transactions, ensuring data integrity.
+- **Unit Testing Support**: Comprehensive unit tests to ensure validation, mapping, and core functionalities work as expected. This includes:
+  - Validation testing for request data integrity (e.g., empty fields, data formats).
+  - Mapping tests to confirm correct data transformations between objects.
 
 ## Installation
 To get started with the DotNetFireStore project, follow these steps:
