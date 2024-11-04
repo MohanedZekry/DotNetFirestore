@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /DotNetFireStore.Persistence/Keys
+/dotnetfirebase-608be-firebase-adminsdk-bp3ky-d7d379c1ba.json
