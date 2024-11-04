@@ -15,8 +15,4 @@
     <ProjectReference Include="..\DotNetFireStore.Domain\DotNetFireStore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Keys\" />
-  </ItemGroup>
-
 </Project>
